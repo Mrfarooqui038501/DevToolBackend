@@ -22,11 +22,9 @@ const limiter = rateLimit({
 });
 app.use(limiter);
 
-// CORS configuration
+// CORS configuration - Allow requests from any origin
 app.use(cors({
-  origin: process.env.NODE_ENV === 'production' 
-    ? ['https://your-frontend-domain.com'] 
-    : ['http://localhost:5173', 'http://127.0.0.1:5173'],
+  origin: '*', // Allow all origins
   credentials: true
 }));
 
@@ -101,4 +99,4 @@ const startServer = async () => {
 
 startServer();
 
-module.exports = app; 
+module.exports = app;
